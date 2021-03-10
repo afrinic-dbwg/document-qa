@@ -16,7 +16,7 @@ runs:
       shell: bash
       run: >
         sudo npm install -g markdownlint-cli &&
-        markdownlint --config "${{ github.action_path }}/markdown-style/.markdownlint.yml"
-                     --ignore ".git/*"
-                     --ignore "${{ github.action_path }}/*"
+        markdownlint --config "${{ github.action_path }}/markdown-style/.markdownlint.yml" \
+                     --ignore ".git/*" \
+                     --ignore "${{ github.action_path }}/*" \
                      "**/*.md"
