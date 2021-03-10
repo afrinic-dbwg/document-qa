@@ -7,9 +7,9 @@ runs:
     - id: spellcheck
       shell: bash
       run: >
-        apt-get update &&
-        apt-get install -y aspell aspell-en &&
-        pip3 install -r "${{ github.action_path }}/spellcheck/requirements.txt" &&
+        sudo apt-get update &&
+        sudo apt-get install -y aspell aspell-en &&
+        sudo pip3 install -r "${{ github.action_path }}/spellcheck/requirements.txt" &&
         cp "${{ github.action_path }}/spellcheck/.dictionary" ./ &&
         pyspelling --config "${{ github.action_path }}/spellcheck/.spellcheck.yml"
     - id: markdown-style
