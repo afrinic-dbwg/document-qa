@@ -36,14 +36,24 @@ The built container can be used directly with the `docker` run-time to perform
 local checks.
 
 ``` sh
-docker run -t -v "$(pwd):/opt/working" --rm "$(docker build -q .)"
+docker pull ghcr.io/afrinic-dbwg/document-qa:release
+docker run --rm \
+           --tty \
+           --volume "$(pwd):/opt/working" \
+           ghcr.io/afrinic-dbwg/document-qa:release
 ```
 
 The same image can be used interactively from the CLI as an interactive spell
 checker.
 
 ``` sh
-docker run -it -v "$(pwd):/opt/working" --rm "$(docker build -q .)" --interactive
+docker pull ghcr.io/afrinic-dbwg/document-qa:release
+docker run --rm \
+           --tty \
+           --interactive \
+           --volume "$(pwd):/opt/working" \
+           ghcr.io/afrinic-dbwg/document-qa:release \
+           --interactive  # yes, that's another interactive, not a typo
 ```
 
 ## License
