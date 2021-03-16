@@ -24,7 +24,11 @@ cat "${wordlist}" >> "${dict_file}"
 colored() {
     color="${1}"
     shift
-    echo -n "$(tput setaf ${color})$@$(tput sgr0)"
+    if [ -t 1 ]; then
+        printf "$(tput setaf ${color})$@$(tput sgr0)"
+    else
+        printf "$@"
+    fi
 }
 red() {
     colored 1 "$@"
@@ -114,7 +118,7 @@ files="$(git ls-files -cmo --exclude-standard **/*.md | uniq)"
 cmd="${1}"
 case "${cmd}" in
     # Interactive spell checking
-    --interactive)
+    --interactive|-i)
         for file in ${files}; do
             hunspell -d "${language},${local_dict}" \
                      -p "${local_wordlist}" \
@@ -129,8 +133,10 @@ case "${cmd}" in
             stylecheck "${file}"
         done
         if [ ${errors} -gt 0 ]; then
-            printf "\n$(red "Found ${errors} errors")\n"
+            printf "\n$(red "Found ${errors} errors")\n\n"
             exit 1
+        else
+            printf "\n$(green "All tests passed")\n\n"
         fi
         ;;
 esac
