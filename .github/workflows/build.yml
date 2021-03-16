@@ -16,8 +16,8 @@ jobs:
       - uses: docker/build-push-action@v1
         with:
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: afrinic-dbwg/document-qa/document-qa
+          password: ${{ secrets.GHCR_PAT }}
+          registry: ghcr.io
+          repository: afrinic-dbwg/document-qa
           tag_with_ref: true
 
