@@ -9,5 +9,5 @@ jobs:
     name: WG Document QA
     steps:
       - uses: actions/checkout@v2
-      - uses: .
+      - uses: ./
 
