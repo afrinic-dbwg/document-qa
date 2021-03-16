@@ -56,6 +56,8 @@ docker run --rm \
            --interactive  # yes, that's another interactive, not a typo
 ```
 
+See the included `Makefile` in the repository root for a simple example of this usage.
+
 ## License
 
 All contents, including user contributions are licensed under the
