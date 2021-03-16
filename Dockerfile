@@ -1,5 +1,8 @@
 FROM debian:10-slim
 
+# Add source repo label
+LABEL org.opencontainers.image.source=https://github.com/afrinic-dbwg/document-qa
+
 # Install base dependencies
 RUN apt update -q && \
     apt install -yq git \
