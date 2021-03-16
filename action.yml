@@ -2,21 +2,5 @@ name: "DBWG document QA checks"
 description: >
   Check documents for spelling errors and markdown style conformance
 runs:
-  using: composite
-  steps:
-    - id: spellcheck
-      shell: bash
-      run: >
-        sudo apt-get update &&
-        sudo apt-get install -y aspell aspell-en &&
-        sudo pip3 install -r "${{ github.action_path }}/spellcheck/requirements.txt" &&
-        cp "${{ github.action_path }}/spellcheck/.dictionary" ./ &&
-        pyspelling --config "${{ github.action_path }}/spellcheck/.spellcheck.yml"
-    - id: markdown-style
-      shell: bash
-      run: >
-        sudo npm install -g markdownlint-cli &&
-        markdownlint --config "${{ github.action_path }}/markdown-style/.markdownlint.yml" \
-                     --ignore ".git/*" \
-                     --ignore "${{ github.action_path }}/*" \
-                     "**/*.md"
+  using: docker
+  image: Dockerfile
