@@ -117,7 +117,7 @@ stylecheck() {
 # Switch to the workspace directory
 cd "${workspace}"
 # Get a list of tracked, modified and untracked files from git
-files="$(git ls-files -cmo --exclude-standard **/*.md | uniq)"
+files="$(git ls-files -cmo --exclude-standard **/*.md | sort | uniq)"
 # Parse CLI args
 cmd="${1}"
 case "${cmd}" in
