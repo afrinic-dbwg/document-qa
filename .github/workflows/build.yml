@@ -9,8 +9,9 @@ on:
       - "master"
 
 jobs:
-  push_to_registry:
+  image-build:
     runs-on: ubuntu-latest
+    name: Image Build
     steps:
       - uses: actions/checkout@v2
       - uses: docker/build-push-action@v1
