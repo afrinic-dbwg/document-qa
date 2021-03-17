@@ -56,6 +56,7 @@ spellcheck() {
             continue
         fi
         if [ ${codeblock} -eq 0 ]; then
+            sline="$(echo "${line}" | sed -E 's/`.+`\s?//g')"
             while read -r out; do
                 case "${out}" in
                     "&"*)
@@ -85,7 +86,7 @@ spellcheck() {
                     *)
                         ;;
                 esac
-            done < <(echo "^${line}" | hunspell -d "${language},${local_dict}" \
+            done < <(echo "^${sline}" | hunspell -d "${language},${local_dict}" \
                                                 -p "${local_wordlist}" -a)
         fi
     done < ${file}
