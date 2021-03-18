@@ -25,12 +25,12 @@ colored() {
     color="${1}"
     shift
     if [ -t 1 ]; then
-        printf "$(tput setaf ${color})$@$(tput sgr0)"
+        echo -n "$(tput setaf ${color})$@$(tput sgr0)"
     elif [ -n ${GITHUB_ACTIONS} ]; then
         term="xterm-256color"
-        printf "$(tput -T${term} setaf ${color})$@$(tput -T${term} sgr0)"
+        echo -n "$(tput -T${term} setaf ${color})$@$(tput -T${term} sgr0)"
     else
-        printf "$@"
+        echo -n "$@"
     fi
 }
 red() {
