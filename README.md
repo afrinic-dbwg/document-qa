@@ -30,7 +30,7 @@ machine is supported.
 Repositories created from the [`work-item-template`](https://github.com/afrinic-dbwg/work-item-template)
 repository will be configured to use this action out of the box.
 
-### As a standalone container
+### As a stand-alone container
 
 The built container can be used directly with the `docker` run-time to perform
 local checks.
