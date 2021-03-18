@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.source=https://github.com/afrinic-dbwg/document-q
 RUN apt update -q && \
     apt install -yq git \
                     hunspell \
-                    hunspell-en-us \
+                    hunspell-en-gb \
                     nodejs \
                     npm
 

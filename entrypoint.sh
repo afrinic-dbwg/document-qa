@@ -8,7 +8,7 @@ shopt -sq globstar
 workspace="${GITHUB_WORKSPACE:-$WORKING_DIR}"
 
 # Choose the language
-language="en_US"
+language="en_GB"
 
 # Set up the local dictionary
 local_dict="local"
